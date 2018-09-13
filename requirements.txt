@@ -1,0 +1,3 @@
+pytest
+junos-eznc
+pytest-cov
