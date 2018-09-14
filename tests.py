@@ -14,13 +14,12 @@ def test_get_dev_info(monkeypatch):
     monkeypatch.setattr(device_connect, 'Device', fake_device_class)
 
     return_value = device_facts()
-    #import pdb; pdb.set_trace()
     assert return_value == {'name': 'saim'}
 
 @mock.patch("device_connect.Device", spec = True)
 def test_using_decorator_get_dev_info(fake_device_class):
     #fake_device_class = mock.MagicMock(spec=device_connect.Device) # no need for this as this was automatically created by the @patch decorator
-    import pdb; pdb.set_trace()
+    #import pdb; pdb.set_trace()
 
     fake_device_class.return_value.facts={"name":"saim"}
     #monkeypatch.setattr(device_connect, 'Device', fake_device_class) # no need for monkeypatching if you are using @patch
@@ -54,10 +53,7 @@ def test_push_config(fake_device_class,fake_config_class):
     fake_config_object = fake_config_class.return_value
     fake_config_object.commit.side_effect = device_connect.ConfigLoadError(fake_device_object,cmd=True, errs=True) # replace fake_decce here with something useful
     #fake_config_object.commit.side_effect = mock.Mock(side_effect = device_connect.ConfigLoadError(fake_device_object,cmd=True, errs=True))
-
-    
     #monkeypatch.setattr(device_connect, 'Config', fake_config_object)
-
     #import pdb; pdb.set_trace()
     print("entering try")
     return_value = push_config()
