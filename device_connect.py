@@ -48,10 +48,4 @@ def push_config():
     except Exception as exc:
         print("entered generel exception")
         return (f"Returned general Exception: {exc}")
-    
-
-if __name__ == "__main__":
-    push_config()
-
-
 
